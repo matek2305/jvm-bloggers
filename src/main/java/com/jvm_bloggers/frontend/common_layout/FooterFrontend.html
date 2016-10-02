@@ -7,21 +7,45 @@
 <body>
 <wicket:panel>
 
-    <footer class="page-footer footer-centered dark text-center">
-        <section class="footer-content">
+    <footer class="page-footer footer-widget dark text-center">
+        <section class="footer-content text-center text-sm-left">
             <div class="container container-wide">
-                <div class="navbar-brand"><a href="/">JVM BL<span class="text-primary">O</span>GGERS</a></div>
-                <ul class="list-inline">
-                    <li><a href="https://twitter.com/jvm_bloggers" class="fa-twitter" target="_blank"></a></li>
-                    <li><a href="https://www.facebook.com/jvmbloggers/" class="fa-facebook" target="_blank"></a></li>
-                </ul>
-                <div class="navbar-host">
-                    hosted by <a href="http://softwaremill.com"><img src="/assets/images/softwaremill.png" alt="SoftwareMill" width="225px"/></a>
+                <div class="row flow-offset-sm-1">
+                    <div class="col-sm-6 col-lg-8">
+                        <div class="navbar-brand"><a href="/">JVM BL<span class="text-primary">O</span>GGERS</a></div>
+                        <div class="navbar-host">
+                            hosted by <a href="http://softwaremill.com"><img src="/assets/images/softwaremill.png" alt="SoftwareMill" width="225px"/></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <p class="lh-21">Subskrybuj nasz newsletter aby co tydzień otrzymywać zestawienie nowych wpisów na polskich blogach</p>
+                        <form method="post" action="php/contact.php" class="rd-mailform subscribe">
+                            <!--RD Mailform Type-->
+                            <input type="hidden" name="form-type" value="subscribe">
+                            <!--END RD Mailform Type-->
+                            <div class="form-group mfInput">
+                                <label for="exampleInputEmail11" class="text-uppercase font-secondary"></label>
+                                <input placeholder="Wpisz swój e-mail" type="text" name="email" data-constraints="@NotEmpty @Email" id="exampleInputEmail11" class="form-control">
+                                <span class="mfValidation"></span></div>
+                            <button type="submit" class="btn rull"></button>
+                        </form>
+                        <ul class="list-inline pull-right">
+                            <li><a href="https://twitter.com/jvm_bloggers" class="fa-twitter" target="_blank"></a></li>
+                            <li><a href="https://www.facebook.com/jvmbloggers/" class="fa-facebook" target="_blank"></a></li>
+                            <li><a href="/pl/rss" class="fa-rss" target="_blank"></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="rights">
-            <p class="copyright">JVM BL<span class="text-primary">O</span>GGERS &#169; <span id="copyright-year"></span> All Rights Reserved </p>
+        <section class="right text-center text-md-left">
+            <div class="container container-wide">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <p class="copyright">JVM BL<span class="text-primary">O</span>GGERS © <span id="copyright-year">2016</span> All Rights Reserved </p>
+                    </div>
+                </div>
+            </div>
         </section>
     </footer>
 
