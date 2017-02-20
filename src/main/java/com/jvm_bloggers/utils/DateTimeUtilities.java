@@ -9,11 +9,18 @@ import static com.jvm_bloggers.utils.NowProvider.DEFAULT_ZONE;
 
 public class DateTimeUtilities {
 
+    public static final String[] POLISH_MONTHS =
+        {"styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień",
+            "wrzesień", "październik", "listopad", "grudzień"};
+
     public static final DateTimeFormatter DATE_TIME_FORMATTER =
         DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public static final DateTimeFormatter DATE_FORMATTER =
         DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    public static final DateTimeFormatter YEAR_MONTH_FORMATTER =
+        DateTimeFormatter.ofPattern("yyyy/MM");
 
     public static LocalDateTime toLocalDateTime(Date date) {
         return date.toInstant().atZone(DEFAULT_ZONE).toLocalDateTime();

@@ -1,18 +1,19 @@
 package com.jvm_bloggers.frontend
 
-import com.jvm_bloggers.frontend.newsletter_issue.NewsletterIssueDto
-import com.jvm_bloggers.frontend.newsletter_issue.NewsletterIssueDtoService
-import com.jvm_bloggers.frontend.newsletter_issue.newsletter_panel.NewsletterIssuePanel
-import org.apache.wicket.markup.html.basic.Label
 import com.jvm_bloggers.MockSpringContextAwareSpecification
+import com.jvm_bloggers.frontend.public_area.HomePage
+import com.jvm_bloggers.frontend.public_area.newsletter_issue.NewsletterIssueDto
+import com.jvm_bloggers.frontend.public_area.newsletter_issue.NewsletterIssueDtoService
+import com.jvm_bloggers.frontend.public_area.newsletter_issue.newsletter_panel.NewsletterIssuePanel
+import com.jvm_bloggers.utils.DateTimeUtilities
+import org.apache.wicket.markup.html.basic.Label
 
+import java.text.NumberFormat
 import java.time.LocalDate
-
 
 class HomePageSpec extends MockSpringContextAwareSpecification {
 
     NewsletterIssueDtoService newsletterIssueService = Stub(NewsletterIssueDtoService)
-
 
     @Override
     protected void setupContext() {
@@ -40,7 +41,7 @@ class HomePageSpec extends MockSpringContextAwareSpecification {
 
     def "Should display 'No issue found' when there are no issues"() {
         given:
-            newsletterIssueService.getLatestIssue() >> Optional.empty()
+            mockEmptyLatestIssue()
         when:
             tester.startPage(HomePage)
         then:
@@ -48,6 +49,35 @@ class HomePageSpec extends MockSpringContextAwareSpecification {
             tester.assertContains("Nie znaleziono takiego wydania")
     }
 
+    private void mockEmptyLatestIssue() {
+        newsletterIssueService.getLatestIssue() >> Optional.empty()
+    }
 
+    def "Should list last 5 newsletter issues on right panel"() {
+        given:
+            mockEmptyLatestIssue()
+            List<NewsletterIssueDto> latestIssues = []
+            (1..5).each {
+                latestIssues.add(NewsletterIssueDto.builder().number(5_000 + it).publishedDate(LocalDate.of(2015, 5, it)).build())
+            }
+            newsletterIssueService.findTop5ByOrderByPublishedDateDesc() >> latestIssues
+        when:
+            tester.startPage(HomePage)
+        then:
+            latestIssues.each {
+                String issueNumber = NumberFormat.getInstance().format(it.number)
+                String publishedDate = DateTimeUtilities.DATE_FORMATTER.format(it.publishedDate)
+                tester.assertContains("Wydanie #$issueNumber - $publishedDate")
+            }
+    }
 
+    def "Should show appropriate message on right panel, when no newsletters"() {
+        given:
+            mockEmptyLatestIssue()
+            newsletterIssueService.findTop5ByOrderByPublishedDateDesc() >> []
+        when:
+            tester.startPage(HomePage)
+        then:
+            tester.assertContains("Newsletterów brak")
+    }
 }

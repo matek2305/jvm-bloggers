@@ -3,7 +3,7 @@
     {
       "jsonId": 1,
       "name": "Tomasz Dziurko",
-      "rss": "http://tomaszdziurko.pl/feed/",
+      "rss": "http://tomaszdziurko.com/feed/",
       "twitter": "@TomaszDziurko"
     },
     {
@@ -513,7 +513,7 @@
     {
       "jsonId": 89,
       "name": "Damian Błażejewski",
-      "rss": "http://blog.dblazejewski.com/feeds/posts/default",
+      "rss": "http://blog.dblazejewski.com/feed/",
       "twitter": "@damian_bl"
     },
     {
@@ -676,7 +676,7 @@
     {
       "jsonId": 119,
       "name": "Tomek (TJ) Janczewski",
-      "rss": "http://www.3pio.pl/?tempskin=_atom",
+      "rss": "http://3pio.pl/atom/",
       "twitter": "@tjancz"
     },
     {
@@ -760,7 +760,8 @@
     {
       "jsonId": 133,
       "name": "Krzysztof Góralski",
-      "rss": "https://krzysztofgoralski.wordpress.com/feed/"
+      "rss": "https://kgoralski.github.io/index.xml",
+      "twitter": "@k_goralski"
     },
     {
       "jsonId": 134,
@@ -816,8 +817,8 @@
     {
       "jsonId": 143,
       "name": "Maciej Aniserowicz",
-      "rss": "http://feeds.feedburner.com/devtalk_pl?format=xml",
-      "twitter": "@devtalkpl"
+      "rss": "http://devstyle.pl/feed/",
+      "twitter": "@maniserowicz"
     },
     {
       "jsonId": 144,
@@ -842,7 +843,61 @@
       "name": "Łukasz Kuczyński",
       "rss": "https://lukcreates.wordpress.com/feed/",
       "twitter": "@panlukaszk"
+    },
+    {
+      "jsonId": 148,
+      "name": "Anna Pietras, Jakub Derda",
+      "rss": "http://kobietydokodu.pl/feed/"
+    },
+    {
+      "jsonId": 149,
+      "name": "Marek Berkan",
+      "rss": "http://www.mberkan.pl/feed/",
+      "twitter": "@MarekBerkan"
+    },
+    {
+      "jsonId": 150,
+      "name": "Mateusz Rasiński",
+      "rss": "https://mateuszrasinski.github.io/feed.xml",
+      "twitter": "@MateuszRasinski"
+    },
+    {
+      "jsonId": 151,
+      "name": "Paweł Chudzik",
+      "rss": "https://blog.pchudzik.com/index.xml"
+    },
+    {
+      "jsonId": 152,
+      "name": "Grzegorz Ziemoński",
+      "rss": "http://tidyjava.com/feed/",
+      "twitter": "@grzegorztj"
+    },
+    {
+      "jsonId": 153,
+      "name": "Bartek Kalinka",
+      "rss": "https://bartekkalinka.github.io/feed.xml",
+      "twitter": "@bartkali"      
+    },
+    {
+      "jsonId": 154,
+      "name": "Daniel Pokusa",
+      "rss": "http://software-empathy.pl/feed/",
+      "twitter": "@dpokusa"
+    },
+    {
+      "jsonId": 155,
+      "name": "Michał Kuliński",
+      "rss": "https://michalkulinski.blogspot.com/feeds/posts/default"
+    },
+    {
+      "jsonId": 156,
+      "name": "Bartosz Wieczorek",
+      "rss": "https://bmwieczorek.wordpress.com/tag/java-2/feed/"
+    },
+    {
+      "jsonId": 157,
+      "name": "JUG Łódź",
+      "rss": "http://blog.juglodz.pl/"
     }
-
   ]
 }

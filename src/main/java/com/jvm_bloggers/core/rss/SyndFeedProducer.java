@@ -1,6 +1,5 @@
 package com.jvm_bloggers.core.rss;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.jvm_bloggers.core.data_fetching.http.ProtocolSwitchingAwareConnectionRedirectHandler;
 import com.jvm_bloggers.core.utils.Validators;
@@ -8,10 +7,8 @@ import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
-
 import lombok.Cleanup;
 import lombok.extern.slf4j.Slf4j;
-
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +16,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -37,8 +33,8 @@ public class SyndFeedProducer {
         URLConnection urlConnection = null;
         try {
             urlConnection = new URL(rssUrl).openConnection();
-            final Map<String, List<String>> headers =
-                ImmutableMap.of("User-Agent", ImmutableList.of(FAKE_USER_AGENT));
+            final Map<String, String> headers =
+                ImmutableMap.of("User-Agent", FAKE_USER_AGENT);
             urlConnection = redirectHandler.handle(urlConnection, headers);
             @Cleanup
             final InputStream inputStream = urlConnection.getInputStream();

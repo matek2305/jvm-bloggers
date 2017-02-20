@@ -3,9 +3,7 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
-        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="001-create-person-table" author="tomasz.dziurko">
 
@@ -354,6 +352,29 @@
                                  referencedColumnNames="ID"
         />
 
+    </changeSet>
+
+    <changeSet id="035-add-accepted-date-column-to-blog-post-table" author="Paweł Kaczorowski">
+        <addColumn tableName="blog_post">
+            <column name="APPROVED_DATE" type="timestamp without timezone"/>
+        </addColumn>
+        <sql>
+            update blog_post set APPROVED_DATE = PUBLISHED_DATE where APPROVED = true
+        </sql>
+    </changeSet>
+
+    <changeSet id="036-update-greeting-template-to-support-issue-link" author="Paweł Kaczorowski">
+        <sqlFile path="update-greeting-template-to-support-issue-link.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="037-implicit-define-name-unique-constraint-on-metadata-table" author="Maciej.Pawlaczyk">
+        <addColumn tableName="METADATA">
+            <column name="NEW_TEMP_NAME" type="varchar(100)"></column>
+        </addColumn>
+        <sql>update METADATA set NEW_TEMP_NAME=NAME</sql>
+        <dropColumn tableName="METADATA" columnName="NAME"/>
+        <renameColumn tableName="METADATA" oldColumnName="NEW_TEMP_NAME" newColumnName="NAME"/>
+        <addUniqueConstraint tableName="METADATA" columnNames="NAME" constraintName="metadata_name_unique"/>
     </changeSet>
 
 </databaseChangeLog>
