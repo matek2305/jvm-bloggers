@@ -1235,10 +1235,10 @@ function isIE() {
                                 message: 'Please use numbers only!'
                             },
                             '@NotEmpty': {
-                                message: 'Field should not be empty!'
+                                message: 'Pole nie może być puste!'
                             },
                             '@Email': {
-                                message: 'Enter valid e-mail address!'
+                                message: 'Wprowadź poprawny adres email!'
                             },
                             '@Phone': {
                                 message: 'Enter valid phone number!'
